@@ -1,0 +1,35 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1007;
+  width: 100%;
+  padding: 16px 30px;
+}
+
+.header-inner {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  max-width: 1180px;
+  margin: 0 auto;
+}
+/* header left */
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.logo-name {
+  font-size: 32px;
+  font-weight: 700;
+  font-family: var(--font-title);
+  letter-spacing: 0.1em;
+}
+
+.button-sign-up {
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 700;
+}

@@ -1,0 +1,228 @@
+/* #region reset */
+
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+*,
+*:focus,
+*::before,
+*::after {
+  box-sizing: border-box;
+  outline: 0;
+}
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* #endregion reset */
+
+/* #region variable */
+:root {
+  --font-title: "Cormorant", serif;
+  --color-title: #000;
+  --color-text: #111;
+  --color-link: #0066c0;
+  --bg-button: #ffd814;
+  --bg-button-hover: #f7ca00;
+  --button-text: #fff;
+  --bg-accent: #549280;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-title);
+  outline: none;
+  transition: all ease-in 0.3s;
+}
+/* #endregion variable */
+
+/* #region font register */
+@font-face {
+  font-family: "Amazon Ember";
+  src: url("/assets/fonts/AmazonEmber-Regular.woff2") format("woff2"),
+    url("/assets/fonts/AmazonEmber-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Amazon Ember";
+  src: url("/assets/fonts/AmazonEmber-Medium.woff2") format("woff2"),
+    url("/assets/fonts/AmazonEmber-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Amazon Ember";
+  src: url("/assets/fonts/AmazonEmber-Bold.woff2") format("woff2"),
+    url("/assets/fonts/AmazonEmber-Bold.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+/* #endregion font register*/
+
+/* #region global */
+body {
+  font-family: "Amazon Ember";
+  font-weight: normal;
+}
+
+.logo {
+  font-family: var(--font-title);
+  font-size: 80px;
+  color: var(--color-title);
+  font-weight: 500;
+}
+
+.logo.vvld {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.global-btn {
+  width: 100%;
+  display: inline-flex;
+  padding: 6px 1px;
+  font-size: 13px;
+  background-color: var(--bg-button);
+  border: 1px solid var(--bg-button);
+  cursor: pointer;
+  line-height: 19px;
+  border-radius: 8px;
+  color: var(--button-text);
+}
+.global-btn:hover {
+  background-color: var(--bg-button-hover);
+}
+/* #endregion global */
