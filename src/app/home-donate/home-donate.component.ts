@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-home-donate',
+  selector: 'home-donate',
   standalone: true,
   imports: [RouterLink],
   templateUrl: './home-donate.component.html',

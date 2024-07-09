@@ -1,6 +1,6 @@
 /* #region vvld footer */
+
 .vvld-footer {
-  margin-top: 60px;
   position: relative;
 }
 
@@ -10,7 +10,7 @@
   position: absolute;
   top: 0;
   left: 50%;
-  width: 96%;
+  width: 100%;
   transform: translateX(-50%);
   pointer-events: none;
 }
@@ -35,12 +35,35 @@
   margin-left: 45px;
 }
 
+.vvld-footer-logo a {
+  position: relative;
+}
+
+.vvld-footer-logo a::before {
+  content: "";
+  position: absolute;
+  width: 200px;
+  height: 160px;
+  background: #8ce8cd;
+  pointer-events: none;
+  z-index: -2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: all ease 0.3s;
+}
+
+.vvld-footer-logo a:hover::before {
+  opacity: 1;
+}
+
 .footer-item {
   position: relative;
 }
 .footer-item a:hover,
 .fb-text a:hover {
-  color: var(--bg-button);
+  color: var(--bg-accent);
 }
 .footer-contact {
   display: flex;
@@ -58,7 +81,7 @@
 
 .footer-icon {
   vertical-align: middle;
-  color: var(--bg-button);
+  color: var(--bg-accent);
   position: absolute;
   top: -2px;
   left: -31px;

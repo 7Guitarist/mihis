@@ -1,14 +1,16 @@
+import { HomeFeatureComponent } from './home-feature/home-feature.component';
 import { Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeDonateComponent } from './home-donate/home-donate.component';
 import { DonatePageComponent } from './donate-page/donate-page.component';
+import { UserAccountComponent } from './user-account/user-account.component';
 
 export const routes: Routes = [
   {
     path: '',
-    component: HomeDonateComponent,
+    component: HomeComponent,
     title: 'Home Page',
   },
   {

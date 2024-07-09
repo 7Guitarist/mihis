@@ -1,4 +1,11 @@
 /* #region donate */
+.logo.vvld a {
+  color: var(--bg-accent);
+  padding: 0 4px;
+}
+.logo.vvld a:hover {
+  background: #8ce8cd;
+}
 .d-tag-container {
   display: flex;
   justify-content: center;
@@ -45,6 +52,7 @@
   margin: 0 auto;
   line-height: 1.4;
   font-size: 20px;
+  margin-bottom: 60px;
 }
 
 @media only screen and (max-width: 991px) {
