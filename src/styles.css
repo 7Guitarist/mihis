@@ -151,10 +151,13 @@ table {
   --color-title: #000;
   --color-text: #111;
   --color-link: #0066c0;
-  --bg-button: #ffd814;
-  --bg-button-hover: #f7ca00;
+  /* --bg-button: #ffd814;
+  --bg-button-hover: #f7ca00; */
+  --bg-button-hover: #2e7862;
+  --bg-button: #338c72;
   --button-text: #fff;
   --bg-accent: #549280;
+  --bg-hover: #8ce8cd;
 }
 
 a {
@@ -194,7 +197,7 @@ a {
 
 /* #region global */
 body {
-  font-family: "Amazon Ember";
+  font-family: "Amazon Ember", sans-serif;
   font-weight: normal;
 }
 
@@ -221,8 +224,60 @@ body {
   line-height: 19px;
   border-radius: 8px;
   color: var(--button-text);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .global-btn:hover {
   background-color: var(--bg-button-hover);
+}
+
+.sign-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+}
+.sign-header h2 {
+  padding-left: 4px;
+  transition: all ease-in 0.2s;
+  pointer-events: all;
+}
+.sign-header h2:hover {
+  background: var(--bg-button-hover);
+  color: #fff;
+}
+
+.form-error {
+  font-size: 14px;
+  margin-top: 7px;
+  margin-left: 9px;
+  color: #dc143c;
+}
+
+.form-ctrl.ng-invalid.ng-touched {
+  border-color: #dc143c;
+}
+
+.vvld-form-group .form-ctrl.ng-invalid.ng-touched:focus {
+  border-color: #dc143c;
+  box-shadow: 0 0 0 3px rgb(220, 20, 60, 0.2),
+    0 1px 2px rgba(220, 20, 68, 0.15) inset;
+}
+
+.vvld-form-group input {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+  border: 1px solid #a6a6a6;
+  border-radius: 3px;
+  height: 31px;
+  transition: all 0.25s ease-in-out;
+}
+
+.vvld-form-group input:focus {
+  background-color: #f7feff;
+  border-color: #007185;
+  box-shadow: 0 0 0 3px #c8f3fa, 0 1px 2px rgba(15, 17, 17, 0.15) inset;
 }
 /* #endregion global */
