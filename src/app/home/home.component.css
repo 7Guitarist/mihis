@@ -1,10 +1,11 @@
 .header {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   z-index: 1007;
   width: 100%;
   padding: 16px 30px;
+  background: var(--bg-accent);
 }
 
 .header-inner {
@@ -14,11 +15,18 @@
   max-width: 1180px;
   margin: 0 auto;
 }
+
 /* header left */
 .header-left {
   display: flex;
   align-items: center;
   gap: 16px;
+}
+.header-logo {
+  padding: 0 0 0 4px;
+}
+.header-logo:hover {
+  background: var(--bg-button-hover);
 }
 
 .logo-name {
@@ -26,6 +34,7 @@
   font-weight: 700;
   font-family: var(--font-title);
   letter-spacing: 0.1em;
+  color: #fff;
 }
 
 .button-sign-up {

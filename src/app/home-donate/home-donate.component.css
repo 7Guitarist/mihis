@@ -55,3 +55,24 @@
     padding-right: 85px;
   }
 }
+
+/* register */
+.register-wrapper {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  gap: 10px;
+  margin: 20px 0;
+  border-left: 0;
+  border-right: 0;
+}
+
+.register-wrapper .global-btn {
+  max-width: 230px;
+}
+
+.reg-link {
+  color: var(--bg-accent);
+}

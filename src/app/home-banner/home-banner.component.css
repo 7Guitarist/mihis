@@ -10,6 +10,7 @@
   overflow: hidden;
   max-height: 690px;
   position: relative;
+  padding: 0 15px;
 }
 
 .banner-text-wrap,
@@ -18,7 +19,7 @@
   max-width: 50%;
 }
 .banner-text-wrap {
-  margin-top: 320px;
+  margin-top: 270px;
 }
 .banner-text {
   font-size: 55px;
