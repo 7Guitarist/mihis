@@ -1,4 +1,4 @@
-<a class="sign-header" routerLink="/"> <h2 class="logo vvld">MIHIS</h2></a>
+<!-- <a class="sign-header" routerLink="/"> <h2 class="logo vvld">MIHIS</h2></a>
 <div class="vvld-box">
   <div class="vvld-box-inner">
     <h1 class="vvld-title">Create account</h1>
@@ -15,18 +15,12 @@
           id="f-name"
           class="form-ctrl"
         />
-        <div *ngIf="signUpForm.errors" class="form-error">
-          <div *ngIf="firstName?.pristine && firstName?.invalid">
-            &#42; Firstname is required
-          </div>
-        </div>
         <div *ngIf="firstName?.pending">
           <mat-progress-spinner
             mode="indeterminate"
             diameter="20"
           ></mat-progress-spinner>
         </div>
-        <!-- pending returns true if atleast 1 async validators is in progress -->
         <div
           *ngIf="firstName?.touched && firstName?.invalid"
           class="form-error"
@@ -56,11 +50,6 @@
           name="password"
           class="form-ctrl"
         />
-        <div *ngIf="signUpForm.errors" class="form-error">
-          <div *ngIf="password?.pristine && password?.invalid">
-            &#42; password is required
-          </div>
-        </div>
         <div *ngIf="password?.touched && password?.invalid" class="form-error">
           <div *ngIf="password?.errors?.['required']">
             &#42; Password is required
@@ -82,32 +71,53 @@
     <p class="vvld-text lst">Already have an account? Sign in</p>
   </div>
 </div>
-<footer></footer>
+<footer></footer> -->
 
-<!-- <a class="sign-header" routerLink="/"> <h2 class="logo vvld">MIHIS</h2></a>
+<a class="sign-header" routerLink="/"> <h2 class="logo vvld">MIHIS</h2></a>
 <div class="vvld-box">
   <div class="vvld-box-inner">
     <h1 class="vvld-title">Create account</h1>
-    <form>
+    <form [formGroup]="signUpForm">
       <div class="vvld-form-group">
         <label for="f-name">First name</label>
         <input
+          formControlName="firstName"
           type="text"
           placeholder="First name"
           id="f-name"
-          name="f-name"
-          required
+          class="form-ctrl"
         />
+        <div
+          *ngIf="firstName?.touched && firstName?.invalid"
+          class="form-error"
+        >
+          <div *ngIf="firstName?.errors?.['required']">
+            &#42; Firstname is required
+          </div>
+          <div *ngIf="firstName?.errors?.['minlength']">
+            &#42; Firstname should be minimum
+            {{firstName?.errors?.['minlength'].requiredLength}} characters
+          </div>
+        </div>
       </div>
       <div class="vvld-form-group">
         <label for="l-name">Last name</label>
         <input
+          formControlName="lastName"
           type="text"
           placeholder="Last name"
           id="l-name"
-          name="l-name"
-          required
+          class="form-ctrl"
         />
+        <div *ngIf="lastName?.touched && lastName?.invalid" class="form-error">
+          <div *ngIf="lastName?.errors?.['required']">
+            &#42; lastName is required
+          </div>
+          <div *ngIf="lastName?.errors?.['minlength']">
+            &#42; lastName should be minimum
+            {{lastName?.errors?.['minlength'].requiredLength}} characters
+          </div>
+        </div>
       </div>
       <div class="vvld-form-group">
         <label for="mobile-email">Mobile number or email</label>
@@ -116,21 +126,47 @@
       <div class="vvld-form-group">
         <label for="password">Password</label>
         <input
+          formControlName="password"
           type="password"
           placeholder="At least 6 characters"
           id="password"
-          name="password"
-          required
+          class="form-ctrl"
         />
+        <!-- FIXME: -->
+        <div *ngIf="password?.touched && password?.invalid" class="form-error">
+          <div *ngIf="password?.errors?.['required']">
+            &#42; Password is required
+          </div>
+          <div *ngIf="password?.errors?.['minlength']">
+            &#42; Password should be minimum
+            {{password?.errors?.['minlength'].requiredLength}} characters
+          </div>
+        </div>
       </div>
       <div class="vvld-form-group lst">
         <label for="password-check">Re-enter password</label>
         <input
+          formControlName="confirmPassword"
           type="password"
           id="password-check"
-          name="password-check"
-          required
+          class="form-ctrl"
         />
+        <div
+          *ngIf="confirmPassword?.touched && confirmPassword?.invalid"
+          class="form-error"
+        >
+          <div *ngIf="confirmPassword?.errors?.['required']">
+            &#42; Confirm Password is required
+          </div>
+        </div>
+        <div
+          *ngIf="
+            confirmPasswordValid && signUpForm?.invalid && passwordMismatchError
+          "
+          class="form-error"
+        >
+          Passwords do not match.
+        </div>
       </div>
 
       <button type="submit" class="global-btn">Continue</button>
@@ -143,4 +179,4 @@
     <p class="vvld-text lst">Already have an account? Sign in</p>
   </div>
 </div>
-<footer></footer> -->
+<footer></footer>
