@@ -2,11 +2,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { Component } from '@angular/core';
 import { TooltipPosition, MatTooltipModule } from '@angular/material/tooltip';
 import { FormControl } from '@angular/forms';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-user-account',
   standalone: true,
-  imports: [MatIconModule, MatTooltipModule],
+  imports: [MatIconModule, MatTooltipModule, FooterComponent],
   templateUrl: './user-account.component.html',
   styleUrl: './user-account.component.css',
 })

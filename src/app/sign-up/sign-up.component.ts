@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FooterComponent } from '../footer/footer.component';
 import { RouterLink } from '@angular/router';
 import {
@@ -13,7 +13,9 @@ import {
 import { UsernameValidators } from '../validators/username.validators';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { PasswordValidators } from '../validators/password.validators';
+import { EmailPhoneValidators } from '../validators/email_phone.validators';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { SignUpService } from '../services/sign-up.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -29,33 +31,19 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
   styleUrl: './sign-up.component.css',
 })
 export class SignUpComponent {
-  signUpForm;
-  // signUpForm = new FormGroup(
-  //   {
-  //     firstName: new FormControl('', [
-  //       Validators.required,
-  //       Validators.minLength(2),
-  //     ]),
-  //     lastName: new FormControl('', [
-  //       Validators.required,
-  //       Validators.minLength(2),
-  //     ]),
-  //     password: new FormControl('', [
-  //       Validators.required,
-  //       Validators.minLength(6),
-  //     ]),
-  //     confirmPassword: new FormControl('', [Validators.required]),
-  //   },
-  //   {
-  //     validators: PasswordValidators.passwordShouldMatch,
-  //   }
-  // );
+  signUpForm: FormGroup;
+  buttonLabel: string = 'Continue';
+  signUpService = inject(SignUpService);
 
   constructor(fb: FormBuilder) {
     this.signUpForm = fb.group(
       {
         firstName: ['', [Validators.required, Validators.minLength(2)]],
         lastName: ['', [Validators.required, Validators.minLength(2)]],
+        emailOrPhone: [
+          '',
+          [Validators.required, EmailPhoneValidators.isEmailOrPhone],
+        ],
         password: ['', [Validators.required, Validators.minLength(6)]],
         confirmPassword: ['', Validators.required],
       },
@@ -71,6 +59,10 @@ export class SignUpComponent {
 
   get lastName() {
     return this.signUpForm.get('lastName');
+  }
+
+  get emailOrPhone() {
+    return this.signUpForm.get('emailOrPhone');
   }
 
   get password() {
@@ -95,10 +87,34 @@ export class SignUpComponent {
         distinctUntilChanged()
       )
       .subscribe(() => {
+        const emailOrPhoneValue = this.emailOrPhone?.value;
+
+        if (emailOrPhoneValue) {
+          if (EmailPhoneValidators.isValidEmail(this.emailOrPhone) === null) {
+            this.buttonLabel = 'Verify Email';
+          } else if (
+            EmailPhoneValidators.isValidPhone(this.emailOrPhone) === null
+          ) {
+            this.buttonLabel = 'Verify Phone';
+          } else {
+            this.buttonLabel = 'Continue';
+          }
+        } else {
+          this.buttonLabel = 'Continue';
+        }
         // Update the boolean flags based on the form's current validity state
         this.confirmPasswordValid = this.confirmPassword?.valid || false;
         this.passwordMismatchError =
           this.signUpForm.errors?.['passwordShouldMatch'] || false;
       });
+  }
+
+  submitSignUpApplication() {
+    this.signUpService.submitSignUpApplication(
+      this.signUpForm.value.firstName ?? '',
+      this.signUpForm.value.lastName ?? '',
+      this.signUpForm.value.emailOrPhone ?? '',
+      this.signUpForm.value.password ?? ''
+    );
   }
 }

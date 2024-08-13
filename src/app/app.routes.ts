@@ -6,6 +6,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeDonateComponent } from './home-donate/home-donate.component';
 import { DonatePageComponent } from './donate-page/donate-page.component';
 import { UserAccountComponent } from './user-account/user-account.component';
+import { ChartsComponent } from './charts/charts.component';
 
 export const routes: Routes = [
   {
@@ -21,6 +22,11 @@ export const routes: Routes = [
   {
     path: 'sign-up',
     component: SignUpComponent,
+    title: 'Sign Up Page',
+  },
+  {
+    path: 'users',
+    component: UserAccountComponent,
     title: 'Sign Up Page',
   },
   //   {
